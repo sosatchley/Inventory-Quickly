@@ -20,6 +20,7 @@ public class dbHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE = "CREATE TABLE " + DB_TABLE+" ("+ ID +
             " INTEGER PRIMARY KEY AUTOINCREMENT, "+ NAME+ " TEXT "+ ")";
+//    create table users_table (id integer primary key autoincrement, name text )
 
     public dbHelper(android.content.Context context) {
         super(context, DB_NAME, null, 1);
@@ -60,6 +61,12 @@ public class dbHelper extends SQLiteOpenHelper {
         String query = "Select * from "+DB_TABLE+" WHERE "+NAME+" Like '%"+text+"%'";
         Cursor cursor = db.rawQuery(query, null);
 
+        return cursor;
+    }
+
+    public Cursor getTables() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
         return cursor;
     }
 }

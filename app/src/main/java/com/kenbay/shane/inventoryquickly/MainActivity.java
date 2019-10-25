@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        userList.setOnItemLongClickListener();
+
         add_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
